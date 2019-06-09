@@ -32,6 +32,7 @@
     "build": "tsdx build",
     "commit": "git-cz",
     "commit:retry": "git-cz --retry",
+    "commitmsg": "commitlint -e",
     "semantic-release": "semantic-release",
     "semantic-release:one-time-setup": "semantic-release-cli setup",
     "start": "tsdx watch",
