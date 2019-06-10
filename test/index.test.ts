@@ -1,27 +1,21 @@
 import remark from 'remark'
+import escapeStringRegExp from 'escape-string-regexp'
 import giphy from '../src'
 
-const markdown = `
-Hey this is a nice youtube video about making modern react apps with gatsby:
-
-https://www.youtube.com/watch?v=GN0xHSk2P8Q
-
-Check it out 👆
-`
-const markdownWithEmbed = `Hey this is a nice youtube video about making modern react apps with gatsby:
-
-<iframe width="480" height="270" src="https://www.youtube.com/embed/GN0xHSk2P8Q?feature=giphy" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-Check it out 👆
-`
+const markdown = "![Hi](<giphy:whats up> 'How is it going?')"
+const expectedPattern = RegExp(
+  escapeStringRegExp('![Hi](https://media.giphy.com/media/') +
+    '.+?' +
+    escapeStringRegExp('/giphy.gif "How is it going?")')
+)
 
 test('giphy', async () => {
   await new Promise(resolve => {
     remark()
-      .use(giphy)
+      .use(giphy, { giphyApiKey: process.env.GIPHY_API_KEY })
       .process(markdown, function(err, file) {
         if (err) throw err
-        resolve(expect(String(file)).toEqual(markdownWithEmbed))
+        resolve(expect(String(file)).toMatch(expectedPattern))
       })
   })
 })

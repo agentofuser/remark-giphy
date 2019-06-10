@@ -1,14 +1,10 @@
-import fetchgiphy from './fetchgiphy'
-import fetchgiphyProviders from './fetchgiphyProviders'
+import fetchGiphy from './fetchGiphy'
 
-import getProviderEndpointForLinkUrl from './getProviderEndpointForLinkUrl'
-import selectPossiblegiphyLinkNodes from './selectPossiblegiphyLinkNodes'
-import transformLinkNodeTogiphyNode from './transformLinkNodeTogiphyNode'
+import selectPossibleGiphyResourceNodes from './selectPossibleGiphyResourceNodes'
+import transformResourceUrlToGiphyUrl from './transformResourceUrlToGiphyUrl'
 
 export {
-  fetchgiphy,
-  fetchgiphyProviders,
-  getProviderEndpointForLinkUrl,
-  selectPossiblegiphyLinkNodes,
-  transformLinkNodeTogiphyNode,
+  fetchGiphy,
+  selectPossibleGiphyResourceNodes,
+  transformResourceUrlToGiphyUrl,
 }
