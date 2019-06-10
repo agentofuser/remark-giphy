@@ -1,20 +1,20 @@
-# remark-oembed
+# remark-giphy
 
 [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
 
-Converts URLs surrounded by newlines into embeds.
+<!-- Add `giphy:` as a
+[CommonMark URI scheme](https://spec.commonmark.org/0.29/#scheme).
 
-The important part of this code is taken directly from
-[Benedicte Raae](https://www.raae.codes/)'s excellent
-[gatsby-remark-oembed](https://github.com/raae/gatsby-remark-oembed) plugin, so
-thank you very much [@raae](https://github.com/raae) 🙏
+Example: -->
+
+Take `![](giphy:search_term)` and replace with first matching gif from giphy.
 
 ## Installation
 
 [yarn][]:
 
 ```bash
-yarn add @agentofuser/remark-oembed
+yarn add @agentofuser/remark-giphy
 ```
 
 ## Usage
@@ -23,11 +23,9 @@ Say we have the following file, `demo.md`:
 
 <!-- prettier-ignore -->
 ```markdown
-Hey this is a nice youtube video about making modern react apps with gatsby:
+Hello there! 👋
 
-https://www.youtube.com/watch?v=GN0xHSk2P8Q
-
-Check it out 👆
+![](giphy:whats_up 'How is it going?')
 ```
 
 And our script, `example.js`, looks as follows:
@@ -35,10 +33,10 @@ And our script, `example.js`, looks as follows:
 ```javascript
 var fs = require('fs')
 var remark = require('remark')
-var oembed = require('@agentofuser/remark-oembed')
+var giphy = require('@agentofuser/remark-giphy')
 
 remark()
-  .use(oembed)
+  .use(giphy)
   .process(fs.readFileSync('demo.md'), function(err, file) {
     if (err) throw err
     console.log(String(file))
@@ -48,29 +46,16 @@ remark()
 Now, running `node example` yields:
 
 ```markdown
-Hey this is a nice youtube video about making modern react apps with gatsby:
+Hello there! 👋
 
-<iframe 
-  width="480" 
-  height="270" 
-  src="https://www.youtube.com/embed/GN0xHSk2P8Q?feature=oembed" 
-  frameborder="0" 
-  allow="accelerometer; 
-    autoplay; 
-    encrypted-media; 
-    gyroscope; 
-    picture-in-picture" 
-  allowfullscreen>
-</iframe>
-
-Check it out 👆
+![](https://media.giphy.com/media/eoVusT7Pi9ODe/giphy.gif 'How is it going?')
 ```
 
 ## API
 
-### `remark().use(oembed)`
+### `remark().use(giphy)`
 
-Converts URLs surrounded by newlines into embeds.
+Take `![](giphy:search_term)` and replace with first matching gif from giphy.
 
 ## Contribute
 
@@ -86,10 +71,10 @@ repository, organisation, or community you agree to abide by its terms.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/agentofuser/remark-oembed.svg
-[build]: https://travis-ci.org/agentofuser/remark-oembed
-[downloads-badge]: https://img.shields.io/npm/dm/remark-oembed.svg
-[downloads]: https://www.npmjs.com/package/@agentofuser/remark-oembed
+[build-badge]: https://img.shields.io/travis/agentofuser/remark-giphy.svg
+[build]: https://travis-ci.org/agentofuser/remark-giphy
+[downloads-badge]: https://img.shields.io/npm/dm/remark-giphy.svg
+[downloads]: https://www.npmjs.com/package/@agentofuser/remark-giphy
 [chat-badge]:
   https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 [chat]: https://spectrum.chat/unified/remark
