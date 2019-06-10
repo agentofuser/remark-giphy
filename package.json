@@ -1,10 +1,10 @@
 {
-  "name": "@agentofuser/remark-oembed",
+  "name": "@agentofuser/remark-giphy",
   "publishConfig": {
     "access": "public"
   },
   "version": "1.0.4",
-  "description": "oembed things",
+  "description": "giphy things",
   "license": "MIT",
   "keywords": [
     "remark",
@@ -12,18 +12,18 @@
     "markdown",
     "plugin",
     "embed",
-    "oembed",
+    "giphy",
     "youtube"
   ],
-  "repository": "agentofuser/remark-oembed",
-  "bugs": "https://github.com/agentofuser/remark-oembed/issues",
+  "repository": "agentofuser/remark-giphy",
+  "bugs": "https://github.com/agentofuser/remark-giphy/issues",
   "author": "Agent of User <git@agentofuser.com> (https://agentofuser.com)",
   "contributors": [
     "Agent of User <git@agentofuser.com> (https://agentofuser.com)"
   ],
   "main": "dist/index.js",
-  "umd:main": "dist/remark-oembed.umd.production.js",
-  "module": "dist/remark-oembed.es.production.js",
+  "umd:main": "dist/remark-giphy.umd.production.js",
+  "module": "dist/remark-giphy.es.production.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"

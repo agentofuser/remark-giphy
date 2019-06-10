@@ -1,16 +1,16 @@
-const transformLinkNodeToOembedNode = (node, oembedResult) => {
-  if (oembedResult.html) {
+const transformLinkNodeTogiphyNode = (node, giphyResult) => {
+  if (giphyResult.html) {
     node.type = 'html'
-    node.value = oembedResult.html
+    node.value = giphyResult.html
     delete node.children
-  } else if (oembedResult.type === 'photo') {
+  } else if (giphyResult.type === 'photo') {
     node.type = 'html'
     node.value = `
-      <img src="${oembedResult.url}"
-        class="gatsby-remark-oembed-photo"
-        width="${oembedResult.width}"
-        height="${oembedResult.width}"
-        title="${oembedResult.title}"/>
+      <img src="${giphyResult.url}"
+        class="gatsby-remark-giphy-photo"
+        width="${giphyResult.width}"
+        height="${giphyResult.width}"
+        title="${giphyResult.title}"/>
     `
     delete node.children
   }
@@ -18,4 +18,4 @@ const transformLinkNodeToOembedNode = (node, oembedResult) => {
   return node
 }
 
-export default transformLinkNodeToOembedNode
+export default transformLinkNodeTogiphyNode

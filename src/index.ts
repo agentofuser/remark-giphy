@@ -1,9 +1,9 @@
 import {
   getProviderEndpointForLinkUrl,
-  fetchOembed,
-  transformLinkNodeToOembedNode,
-  fetchOembedProviders,
-  selectPossibleOembedLinkNodes,
+  fetchgiphy,
+  transformLinkNodeTogiphyNode,
+  fetchgiphyProviders,
+  selectPossiblegiphyLinkNodes,
 } from './utils'
 
 // For each node this is the process
@@ -12,8 +12,8 @@ const processNode = async (node: { url: string }, providers = []) => {
   try {
     const endpoint = getProviderEndpointForLinkUrl(node.url, providers)
     if (endpoint.url) {
-      const oembedResponse = await fetchOembed(endpoint)
-      mutatedNode = transformLinkNodeToOembedNode(node, oembedResponse)
+      const giphyResponse = await fetchgiphy(endpoint)
+      mutatedNode = transformLinkNodeTogiphyNode(node, giphyResponse)
     }
   } catch (error) {
     error.url = node.url
@@ -23,10 +23,10 @@ const processNode = async (node: { url: string }, providers = []) => {
 }
 
 async function transformer(tree: any, _file: any) {
-  const providers = await fetchOembedProviders()
+  const providers = await fetchgiphyProviders()
 
   const usePrefix = false
-  const nodes = selectPossibleOembedLinkNodes(tree, usePrefix)
+  const nodes = selectPossiblegiphyLinkNodes(tree, usePrefix)
 
   await Promise.all(nodes.map(node => processNode(node, providers)))
 

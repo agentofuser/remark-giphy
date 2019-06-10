@@ -1,14 +1,14 @@
-import fetchOembed from './fetchOembed'
-import fetchOembedProviders from './fetchOembedProviders'
+import fetchgiphy from './fetchgiphy'
+import fetchgiphyProviders from './fetchgiphyProviders'
 
 import getProviderEndpointForLinkUrl from './getProviderEndpointForLinkUrl'
-import selectPossibleOembedLinkNodes from './selectPossibleOembedLinkNodes'
-import transformLinkNodeToOembedNode from './transformLinkNodeToOembedNode'
+import selectPossiblegiphyLinkNodes from './selectPossiblegiphyLinkNodes'
+import transformLinkNodeTogiphyNode from './transformLinkNodeTogiphyNode'
 
 export {
-  fetchOembed,
-  fetchOembedProviders,
+  fetchgiphy,
+  fetchgiphyProviders,
   getProviderEndpointForLinkUrl,
-  selectPossibleOembedLinkNodes,
-  transformLinkNodeToOembedNode,
+  selectPossiblegiphyLinkNodes,
+  transformLinkNodeTogiphyNode,
 }
