@@ -2,12 +2,14 @@
 
 [![Downloads][downloads-badge]][downloads] [![Chat][chat-badge]][chat]
 
-<!-- Add `giphy:` as a
+Add `giphy:` as a
 [CommonMark URI scheme](https://spec.commonmark.org/0.29/#scheme).
 
-Example: -->
+Examples:
 
-Take `![](giphy:search_term)` and replace with first matching gif from giphy.
+- Replace `![](giphy:search_term)` with first matching gif from giphy.
+- Replace `![](<giphy:unescaped query>)` with first matching gif from giphy.
+- Replace `[link](<giphy:search term>)` with first matching gif from giphy.
 
 ## Installation
 
@@ -36,7 +38,7 @@ var remark = require('remark')
 var giphy = require('@agentofuser/remark-giphy')
 
 remark()
-  .use(giphy)
+  .use(giphy, { giphyApiKey: 'your-key' })
   .process(fs.readFileSync('demo.md'), function(err, file) {
     if (err) throw err
     console.log(String(file))
@@ -53,9 +55,17 @@ Hello there! 👋
 
 ## API
 
-### `remark().use(giphy)`
+### `remark().use(giphy, options)`
 
 Take `![](giphy:search_term)` and replace with first matching gif from giphy.
+
+- The object `options` MUST contain a valid Giphy API key as the `giphyApiKey`
+  property.
+- The object `options` MAY contain a valid Giphy API ID as the
+  `notFoundGiphyId` property. It will be used when there are no search results
+  for the term used. The default is this one:
+
+  ![404 not found](https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif 'not found gif')
 
 ## Contribute
 

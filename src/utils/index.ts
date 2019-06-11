@@ -1,10 +1,10 @@
-import fetchGiphy from './fetchGiphy'
+import fetchGiphyId from './fetchGiphyId'
 
 import selectPossibleGiphyResourceNodes from './selectPossibleGiphyResourceNodes'
 import transformResourceUrlToGiphyUrl from './transformResourceUrlToGiphyUrl'
 
 export {
-  fetchGiphy,
+  fetchGiphyId,
   selectPossibleGiphyResourceNodes,
   transformResourceUrlToGiphyUrl,
 }

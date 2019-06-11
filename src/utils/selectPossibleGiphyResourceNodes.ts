@@ -1,8 +1,8 @@
 import { selectAll } from 'unist-util-select'
 
 const selectPossibleGiphyResourceNodes = (markdownAST: any) => {
-  const nodes = selectAll('image', markdownAST).filter(node =>
-    node.url.startsWith('giphy:')
+  const nodes = selectAll('*', markdownAST).filter(
+    node => node.url && node.url.startsWith('giphy:')
   )
   return nodes
 }

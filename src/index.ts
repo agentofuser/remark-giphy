@@ -1,17 +1,17 @@
 import {
-  fetchGiphy,
+  fetchGiphyId,
   transformResourceUrlToGiphyUrl,
   selectPossibleGiphyResourceNodes,
 } from './utils'
 
 // For each node this is the process
-const processNode = async (giphyApiKey, node) => {
+const processNode = async (options, node) => {
   let mutatedNode = node
   try {
     const query = decodeURIComponent(node.url.replace('giphy:', ''))
 
-    const giphyResponse = await fetchGiphy(giphyApiKey, query)
-    mutatedNode = transformResourceUrlToGiphyUrl(node, giphyResponse)
+    const giphyId = await fetchGiphyId(options, query)
+    mutatedNode = transformResourceUrlToGiphyUrl(node, giphyId)
   } catch (error) {
     error.node = node
     throw error
@@ -19,20 +19,20 @@ const processNode = async (giphyApiKey, node) => {
   return mutatedNode
 }
 
-function getTransformer(giphyApiKey: string) {
+function getTransformer(options) {
   return async function transformer(tree: any, _file: any) {
     const nodes = selectPossibleGiphyResourceNodes(tree)
 
     if (nodes.length > 0) {
-      await Promise.all(nodes.map(node => processNode(giphyApiKey, node)))
+      await Promise.all(nodes.map(node => processNode(options, node)))
     }
 
     return tree
   }
 }
 
-function attacher({ giphyApiKey }) {
-  return getTransformer(giphyApiKey)
+function attacher(options) {
+  return getTransformer(options)
 }
 
 export default attacher

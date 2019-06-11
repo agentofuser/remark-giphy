@@ -1,5 +1,4 @@
-const transformResourceUrlToGiphyUrl = (node, giphyResult) => {
-  const giphyId = giphyResult[0].id
+const transformResourceUrlToGiphyUrl = (node, giphyId) => {
   const imgSrc = `https://media.giphy.com/media/${giphyId}/giphy.gif`
   const mutatedNode = node
   mutatedNode.url = imgSrc
