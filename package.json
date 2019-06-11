@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "replace giphy:search_term with gif url from giphy",
   "license": "MIT",
   "keywords": [
